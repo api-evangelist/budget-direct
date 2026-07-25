@@ -1,0 +1,262 @@
+aid: budget-direct
+name: Budget Direct
+review:
+  question: Does Budget Direct expose a public, self-serve developer portal or documented API?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: Australia
+  tier: carrier-pc
+  openapiHarvested: false
+  specsCount: 0
+findings:
+  summary: |
+    Budget Direct publishes no public developer portal and no public API. It is a
+    direct-to-consumer general insurance brand operated by Auto & General Services
+    Pty Ltd (ABN 61 003 617 909), with general insurance issued by Auto & General
+    Insurance Company Limited (ABN 42 111 586 353), an APRA-authorised insurer based
+    in Toowong, Queensland. Every conventional developer host and path was probed on
+    2026-07-25 and none exists. The full published sitemap (738 URLs) contains no
+    developer, API, integration, broker or partner-technical page. The four insurance
+    verbs — quote, bind, issue and FNOL — exist only as consumer web journeys and a
+    logged-in "existing customers" self-service area; none is exposed as a documented
+    machine interface. Distribution partnerships (Qantas, Coles Insurance, ING,
+    Oceania Insurance) are run by the parent Auto & General as private commercial
+    arrangements with no published technical integration terms. The single piece of
+    API infrastructure visible from outside is a first-party Apigee gateway hostname
+    referenced as a preconnect hint by the consumer website. This is an honest stub
+    and the correct outcome: an APRA-regulated Australian carrier with zero public
+    API surface, consistent with an Australian market where the Consumer Data Right
+    was designated to extend to general insurance and then deferred, leaving no
+    forcing function for insurer API publication.
+  developerPortal:
+    exists: false
+    url: ''
+    verdict: >-
+      No developer portal of any kind — not a real self-serve portal, not a partner
+      login wall, not a marketing "innovation" page. The developer surface simply
+      does not exist on either budgetdirect.com.au or the parent autogeneral.com.au.
+    gated: true
+    gatedNote: >-
+      Recorded as gated because the only route to integration is a private commercial
+      partner/white-label relationship negotiated with Auto & General; there is no
+      self-serve path and no published technical surface at all.
+  probes:
+  - url: https://budgetdirect.com.au
+    status: 200
+    note: Redirects to https://www.budgetdirect.com.au/ — consumer marketing and quote site.
+  - url: https://developer.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://developers.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://docs.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://api.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://apis.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://partners.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://portal.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://broker.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://sandbox.budgetdirect.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://www.budgetdirect.com.au/developers
+    status: 404
+  - url: https://www.budgetdirect.com.au/developer
+    status: 404
+  - url: https://www.budgetdirect.com.au/api
+    status: 404
+  - url: https://www.budgetdirect.com.au/partners
+    status: 404
+  - url: https://www.budgetdirect.com.au/integrations
+    status: 404
+  - url: https://www.budgetdirect.com.au/openapi.json
+    status: 404
+    note: HTML 404 page, not a spec.
+  - url: https://www.budgetdirect.com.au/swagger.json
+    status: 404
+    note: HTML 404 page, not a spec.
+  - url: https://www.budgetdirect.com.au/api-docs
+    status: 404
+  - url: https://www.budgetdirect.com.au/graphql
+    status: 404
+    note: No GraphQL surface; nothing to introspect.
+  - url: https://www.budgetdirect.com.au/.well-known/openid-configuration
+    status: 404
+    note: No OpenID Connect discovery document served.
+  - url: https://www.budgetdirect.com.au/.well-known/oauth-authorization-server
+    status: 404
+    note: No OAuth authorization server metadata served.
+  - url: https://www.budgetdirect.com.au/robots.txt
+    status: 200
+    note: >-
+      Points to sitemap-index.xml. Disallows /start/, /landingpages, /terms-conditions,
+      /existing-customers/welcome and /search.html. No developer or API paths mentioned.
+  - url: https://www.budgetdirect.com.au/sitemap-0.xml
+    status: 200
+    note: >-
+      738 URLs enumerated on 2026-07-25. Grep for api|developer|partner|integration|acord|broker|agent
+      returned only three unrelated marketing pages (charity partners, a home-renovation guide, a
+      public-holidays article). No developer, API or integration page exists in the published sitemap.
+  - url: https://www.autogeneral.com.au/
+    status: 200
+    note: Parent company site.
+  - url: https://www.autogeneral.com.au/partners/
+    status: 200
+    note: >-
+      Lists Budget Direct, Qantas, Coles Insurance, ING Bank and Oceania Insurance as
+      distribution partners. Business/strategic language only — no API, developer portal,
+      ACORD, EDI or technical integration content of any kind.
+  - url: https://www.autogeneral.com.au/api
+    status: 404
+  - url: https://developer.autogeneral.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://apidocs.autogeneral.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://api.autogeneral.com.au/
+    status: 000
+    note: >-
+      DNS CNAME to autogeneral-prod.apigee.net, which returns no A record, so the host is
+      unreachable anonymously (curl exit 6, could not resolve). The hostname is present in
+      the budgetdirect.com.au homepage as a <link rel="preconnect"> / <link rel="dns-prefetch">
+      hint, indicating a first-party Apigee-managed gateway used by the consumer web journey.
+      It is undocumented, has no developer portal, and is not a public API.
+  - url: https://docs.autogeneral.com.au/
+    status: 200
+    note: >-
+      NOT API documentation. Resolves to CloudFront in front of an S3 bucket
+      (aag-prd-25-marketing-infra-public) that returns an XML object listing of marketing and
+      compliance PDFs (PDS, FSG, claim forms) for Auto & General brands. /openapi.json,
+      /swagger.json, /api-docs and /index.html all return 404 there. No spec, no reference docs.
+  - url: https://autogeneral.apigee.io
+    status: 404
+    note: No Apigee-hosted developer portal.
+  - url: https://autogeneral-prod-portal.apigee.io
+    status: 404
+    note: No Apigee-hosted developer portal.
+  acordPosture: no ACORD reference found
+  acordEvidence: >-
+    No occurrence of ACORD, AL3, ACORD XML, ACORD certified or NGDS was found in the
+    budgetdirect.com.au homepage source, in the 738-URL published sitemap, or on the
+    Auto & General partners page. This is consistent with the Australian market: ACORD
+    AL3 / IVANS agency-download plumbing is a US broker-distribution artefact, and
+    Budget Direct is a direct-to-consumer carrier with no agency-management-system
+    channel to feed.
+  insuranceVerbs:
+    quote:
+      exposed: false
+      note: >-
+        Consumer web quote journeys exist per product (car, home and contents, motorcycle,
+        travel, life, pet, roadside) under /start/ — which robots.txt disallows. No API.
+    bind:
+      exposed: false
+      note: Purchase completes inside the same consumer web journey. No API.
+    issue:
+      exposed: false
+      note: Policy documents delivered to the logged-in existing-customer area and by email. No API.
+    fnol:
+      exposed: false
+      note: >-
+        Claims are lodged online in the customer portal or by phone. No public FNOL API,
+        no claims webhook, no partner claims specification.
+    audience: consumer-facing web only; partner integration is private and unpublished
+  authModel:
+    scheme: none published
+    note: >-
+      No API key programme, no OAuth2 client-credentials or authorization-code flow, no mTLS
+      partner onboarding and no SAML partner-portal federation is documented publicly. The only
+      authentication surface is the consumer "existing customers" login on budgetdirect.com.au.
+      Neither /.well-known/openid-configuration nor /.well-known/oauth-authorization-server is
+      served (both HTTP 404).
+  webhooks:
+    exists: false
+    note: No event catalog, no AsyncAPI document, no webhook documentation. Absence is the finding.
+  postman:
+    exists: false
+    note: No public Postman collection or workspace found for Budget Direct or Auto & General.
+  graphql:
+    exists: false
+    note: No /graphql endpoint (HTTP 404) and no GraphQL reference in page source. Nothing to introspect.
+  grpc:
+    exists: false
+    note: No published .proto files.
+  openapi:
+    harvested: false
+    count: 0
+    note: >-
+      No OpenAPI or Swagger document exists to harvest. Every candidate path returned an HTML
+      404. The openapi/ directory is intentionally omitted from this repository.
+  transports:
+  - protocol: HTTPS Web
+    scheme: https
+    baseURL: https://www.budgetdirect.com.au/
+    documented: true
+    note: Consumer marketing, quote journeys and logged-in self-service. Human interface, not an API.
+  - protocol: REST
+    scheme: https
+    documented: false
+    note: >-
+      A first-party Apigee gateway hostname (api.autogeneral.com.au → autogeneral-prod.apigee.net)
+      backs the consumer journey but is undocumented, unresolvable anonymously, and not offered
+      as a public API.
+  - protocol: GraphQL
+    documented: false
+    note: Not present.
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+    note: Not present.
+  - protocol: Webhook
+    documented: false
+    note: Not present.
+  - protocol: ACORD/EDI
+    documented: false
+    note: >-
+      No ACORD AL3, ACORD XML or NGDS transport referenced. Direct-to-consumer carrier with no
+      agency-download channel.
+sources:
+- url: https://www.budgetdirect.com.au/
+  type: Website
+  note: Homepage, fetched 2026-07-25 (HTTP 200). Contains the api.autogeneral.com.au preconnect hint.
+- url: https://www.budgetdirect.com.au/about-us.html
+  type: About
+  note: >-
+    Fetched 2026-07-25 (HTTP 200). Confirms Auto & General Insurance Company Limited
+    (ABN 42 111 586 353) as issuer, Auto & General Services Pty Ltd (ABN 61 003 617 909) as
+    arranger, NobleOak Life Limited for life, Zurich Australian Insurance Limited for travel,
+    "Protecting Australians for over 20 years", and Canstar & Money Magazine Insurer of the
+    Year 2026.
+- url: https://www.budgetdirect.com.au/robots.txt
+  type: Website
+  note: Fetched 2026-07-25 (HTTP 200).
+- url: https://www.budgetdirect.com.au/sitemap-0.xml
+  type: Website
+  note: Fetched 2026-07-25 (HTTP 200). 738 URLs; no developer/API/integration page.
+- url: https://www.autogeneral.com.au/partners/
+  type: Partners
+  note: >-
+    Fetched 2026-07-25 (HTTP 200). Partner list is commercial/strategic; contains no API,
+    developer portal, ACORD or EDI content.
+actions:
+  apisListed: 0
+  openapiDirectoryCreated: false
+  status: built-stub
+  reason: >-
+    Identity captured accurately with an empty apis[] block. There is no public self-serve API,
+    no developer portal and no harvestable specification. Recording that absence precisely — for
+    an APRA-regulated Australian carrier in a market where the CDR insurance designation was
+    deferred — is the correct and intended outcome for this data set.
