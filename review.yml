@@ -148,6 +148,59 @@ findings:
   - url: https://autogeneral-prod-portal.apigee.io
     status: 404
     note: No Apigee-hosted developer portal.
+  - url: https://www.budgetdirect.com.au/.well-known/security.txt
+    status: 200
+    note: >-
+      Enrichment round 2026-07-25. Real RFC 9116 document (text/plain): Contact
+      cybersecurity@autogeneral.com.au, Expires 2026-10-31, Preferred-Languages en, Policy
+      https://www.autogeneral.com.au/docs/ag-external-vulnerability-disclosure-policy.pdf.
+      Saved verbatim to well-known/budget-direct-security.txt. The identical file is served
+      on www.autogeneral.com.au.
+  - url: https://www.autogeneral.com.au/docs/ag-external-vulnerability-disclosure-policy.pdf
+    status: 200
+    note: Auto & General external vulnerability disclosure policy (application/pdf). Referenced by security.txt.
+  - url: https://www.budgetdirect.com.au/.well-known/apple-app-site-association
+    status: 200
+    note: >-
+      Universal Links for the Budget Direct Fuel Discounts iOS app
+      (3M7D445KMV.au.com.budgetdirect.bdfueldiscounts, paths /bdapp/*). Saved verbatim; as
+      published it contains trailing commas and is not strict JSON.
+  - url: https://www.budgetdirect.com.au/.well-known/assetlinks.json
+    status: 200
+    note: Android Digital Asset Links for package au.com.budgetdirect.bdfueldiscounts (3 signing certs).
+  - url: https://www.budgetdirect.com.au/.well-known/api-catalog
+    status: 404
+  - url: https://www.budgetdirect.com.au/.well-known/ai-plugin.json
+    status: 404
+  - url: https://www.budgetdirect.com.au/.well-known/mcp.json
+    status: 404
+    note: No MCP manifest; no hosted MCP server exists for this brand.
+  - url: https://www.budgetdirect.com.au/.well-known/oauth-protected-resource
+    status: 404
+  - url: https://www.budgetdirect.com.au/llms.txt
+    status: 404
+    note: No provider-published llms.txt. A generated one lives at llms/budget-direct-llms.txt.
+  - url: https://secure.budgetdirect.com.au/
+    status: 403
+    note: >-
+      Customer transaction host resolves but is behind bot protection (Cloudflare interstitial)
+      for anonymous clients. Not an API host; no developer surface behind it.
+  - url: https://www.budgetdirect.com.au/start/terms-of-use.html
+    status: 200
+    note: Terms of use, linked from the site footer.
+  - url: https://www.budgetdirect.com.au/start/privacy-policy.html
+    status: 403
+    note: >-
+      Page exists and is linked from the homepage footer, but /start/ is behind the same
+      Cloudflare bot protection, so anonymous probes receive a challenge rather than the page.
+  - url: https://api.github.com/orgs/autogeneral
+    status: 200
+    note: >-
+      github.com/AutoGeneral is the parent's real GitHub organization — 19 public repos,
+      confirmed first-party by the "Auto & General Open Source Hub" site at
+      autogeneral.github.io and the "A&G Web Application Testing Suite" (Iridium) repo. It
+      contains internal test/deploy tooling and OSS forks only — no API client libraries,
+      because there is no API. npm and PyPI searches for budgetdirect returned nothing.
   acordPosture: no ACORD reference found
   acordEvidence: >-
     No occurrence of ACORD, AL3, ACORD XML, ACORD certified or NGDS was found in the
@@ -194,6 +247,28 @@ findings:
   grpc:
     exists: false
     note: No published .proto files.
+  securityTxt:
+    exists: true
+    url: https://www.budgetdirect.com.au/.well-known/security.txt
+    standard: RFC 9116
+    contact: cybersecurity@autogeneral.com.au
+    policy: https://www.autogeneral.com.au/docs/ag-external-vulnerability-disclosure-policy.pdf
+    expires: '2026-10-31T14:00:00.000Z'
+    note: >-
+      Found on the 2026-07-25 enrichment round. This is the one genuine machine-readable
+      discovery document Budget Direct publishes, and it establishes a real coordinated
+      vulnerability disclosure path even though there is no API to disclose against.
+  sdks:
+    exists: false
+    note: >-
+      No first-party client libraries on npm, PyPI or in the parent's GitHub organization.
+      The AutoGeneral org publishes internal QA/deployment tooling and OSS forks only.
+  mobileApps:
+    exists: true
+    note: >-
+      Budget Direct Fuel Discounts ships on iOS (au.com.budgetdirect.bdfueldiscounts, team
+      3M7D445KMV) and Android (same package), evidenced by the app-association files. The
+      apps are consumer-facing and expose no documented API.
   openapi:
     harvested: false
     count: 0

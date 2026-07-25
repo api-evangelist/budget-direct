@@ -22,6 +22,9 @@ description: >-
   undocumented, with no developer portal, no OpenAPI, no ACORD/AL3 reference anywhere on either
   site, and partner integration handled as private commercial arrangements through Auto & General.
   This record is an honest stub: an APRA-regulated Australian carrier with no public API surface.
+  The only machine-readable documents it serves are an RFC 9116 /.well-known/security.txt pointing
+  at Auto & General's published external vulnerability disclosure policy, and the Apple and Android
+  app-association files for its Fuel Discounts mobile app.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Insurance
@@ -41,6 +44,10 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: VulnerabilityDisclosure
+  url: security/budget-direct-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/budget-direct-domain-security.yml
 - type: Website
   url: https://www.budgetdirect.com.au/
 - type: About
@@ -57,6 +64,28 @@ common:
   url: https://www.autogeneral.com.au/
 - type: Partners
   url: https://www.autogeneral.com.au/partners/
+- type: Support
+  url: https://www.budgetdirect.com.au/contact-us.html
+- type: Login
+  url: https://www.budgetdirect.com.au/existing-customers/policy-manager.html
+- type: TermsOfService
+  url: https://www.budgetdirect.com.au/start/terms-of-use.html
+- type: PrivacyPolicy
+  url: https://www.budgetdirect.com.au/start/privacy-policy.html
+- type: GitHubOrganization
+  url: https://github.com/AutoGeneral
+- type: Compliance
+  url: https://www.budgetdirect.com.au/about-us/code-of-practice.html
+- type: Security
+  url: https://www.autogeneral.com.au/docs/ag-external-vulnerability-disclosure-policy.pdf
+- type: SecurityTxt
+  url: well-known/budget-direct-security.txt
+- type: WellKnown
+  url: well-known/budget-direct-well-known.yml
+- type: Conformance
+  url: conformance/budget-direct-conformance.yml
+- type: LLMsTxt
+  url: llms/budget-direct-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

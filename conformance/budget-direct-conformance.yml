@@ -1,0 +1,85 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://www.budgetdirect.com.au/about-us/code-of-practice.html,
+  https://www.budgetdirect.com.au/.well-known/security.txt,
+  https://www.autogeneral.com.au/docs/ag-external-vulnerability-disclosure-policy.pdf
+note: >-
+  Budget Direct publishes no API, so every API-technical standard below is recorded as
+  not-conforming because the surface it would apply to does not exist — that is an honest
+  absence, not a failure to find documentation. The standards Budget Direct DOES conform to
+  are regulatory and industry-code obligations of its underwriter, Auto & General Insurance
+  Company Limited, plus the one web standard it actually implements (RFC 9116).
+standards:
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: >-
+    https://www.budgetdirect.com.au/.well-known/security.txt returns HTTP 200 text/plain with
+    Contact, Expires, Preferred-Languages and Policy fields (probed 2026-07-25).
+- id: general-insurance-code-of-practice
+  conforms: true
+  authority: Insurance Council of Australia (ICA)
+  evidence: >-
+    Auto & General Insurance Company Limited, the underwriter of Budget Direct insurance, is a
+    signatory to the General Insurance Code of Practice and is contractually bound to the ICA;
+    compliance is monitored and enforced by the independent Code Governance Committee (CGC),
+    whose sanctions bind the insurer. Published at
+    https://www.budgetdirect.com.au/about-us/code-of-practice.html
+- id: apra-general-insurance-authorisation
+  conforms: true
+  authority: Australian Prudential Regulation Authority
+  evidence: >-
+    General insurance products are issued by Auto & General Insurance Company Limited
+    (ABN 42 111 586 353), an APRA-authorised general insurer; life cover is underwritten by
+    NobleOak Life Limited and travel cover by Zurich Australian Insurance Limited. Stated on
+    https://www.budgetdirect.com.au/about-us.html
+- id: coordinated-vulnerability-disclosure
+  conforms: true
+  evidence: >-
+    Auto & General publishes an external vulnerability disclosure policy PDF (HTTP 200,
+    application/pdf) referenced from the security.txt Policy field, with a named security
+    contact (cybersecurity@autogeneral.com.au).
+- id: apple-universal-links
+  conforms: true
+  evidence: /.well-known/apple-app-site-association served (HTTP 200) for the Budget Direct Fuel Discounts app.
+- id: android-digital-asset-links
+  conforms: true
+  evidence: /.well-known/assetlinks.json served (HTTP 200) for au.com.budgetdirect.bdfueldiscounts.
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI or Swagger document exists on any Budget Direct or Auto & General host (probed 2026-07-25).
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is documented; nothing to describe.
+- id: oauth2
+  conforms: false
+  evidence: /.well-known/oauth-authorization-server returns 404; no OAuth client programme is documented.
+- id: openid-connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on both budgetdirect.com.au and autogeneral.com.au.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No public API, therefore no error envelope is published.
+- id: acord-al3
+  conforms: false
+  evidence: >-
+    No ACORD, AL3, ACORD XML or NGDS reference appears in the homepage source, the 738-URL
+    published sitemap, or the Auto & General partners page. Consistent with a
+    direct-to-consumer Australian carrier that has no agency-download channel.
+- id: cdr-consumer-data-right
+  conforms: false
+  authority: Australian Treasury / ACCC
+  evidence: >-
+    The Consumer Data Right was designated to extend to general insurance and then deferred,
+    so no CDR product or data-holder API obligation applies to Budget Direct today. There is
+    no forcing function for insurer API publication in this market.
+compliance_program:
+  published: true
+  url: https://www.budgetdirect.com.au/about-us/code-of-practice.html
+  programs:
+  - General Insurance Code of Practice (ICA signatory, CGC-monitored)
+  - APRA-authorised general insurer (Auto & General Insurance Company Limited)
+  certifications: []
+  note: >-
+    No security certifications (SOC 2, ISO 27001, PCI DSS) are published on either host and no
+    trust center exists; the published compliance posture is regulatory and industry-code only.
