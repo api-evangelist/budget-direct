@@ -1,5 +1,8 @@
 aid: budget-direct
 url: https://raw.githubusercontent.com/api-evangelist/budget-direct/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "This record is an honest stub: an APRA-regulated Australian carrier with no public API surface."
 name: Budget Direct
 kind: company
 description: >-
