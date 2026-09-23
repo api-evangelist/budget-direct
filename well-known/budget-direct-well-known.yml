@@ -2,56 +2,12 @@ generated: '2026-07-25'
 method: searched
 source: live probes of the Budget Direct and Auto & General web hosts
 host: https://www.budgetdirect.com.au
-note: >-
-  Budget Direct publishes no API, so there is no API host to probe. These documents were
-  fetched from the consumer web host. The only machine-readable discovery documents Budget
-  Direct serves are an RFC 9116 security.txt (which points at the Auto & General external
-  vulnerability disclosure policy) and the two mobile-app association files for its Fuel
-  Discounts app. No OAuth/OIDC discovery, no API catalog, no AI plugin and no MCP manifest
-  is served. The identical security.txt is served on the parent host www.autogeneral.com.au.
-documents:
-- path: /.well-known/security.txt
-  status: 200
-  content_type: text/plain
-  file: budget-direct-security.txt
-  standard: RFC 9116
-  note: Contact cybersecurity@autogeneral.com.au; Policy points at the A&G external VDP PDF; Expires 2026-10-31.
-- path: /.well-known/apple-app-site-association
-  status: 200
-  file: budget-direct-apple-app-site-association
-  standard: Apple Universal Links / associated domains
-  strict_json: false
-  note: >-
-    Saved verbatim under the extensionless name the provider serves. As published it contains
-    trailing commas, so it is not strict JSON (Apple's parser tolerates this); it is stored
-    without a .json extension for that reason. Associates app
-    3M7D445KMV.au.com.budgetdirect.bdfueldiscounts
-    with /bdapp/* and declares webcredentials for the same app.
-- path: /.well-known/assetlinks.json
-  status: 200
-  file: budget-direct-assetlinks.json
-  standard: Android Digital Asset Links
-  note: Delegates handle_all_urls to the Android package au.com.budgetdirect.bdfueldiscounts (3 signing certs).
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/oauth-protected-resource
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
-- path: /.well-known/mcp.json
-  status: 404
-- path: /.well-known/change-password
-  status: 404
-- path: /llms.txt
-  status: 404
-  note: No provider-published llms.txt; llms/budget-direct-llms.txt is generated from this catalog.
-- path: /security.txt
-  status: 404
-  note: Root-level fallback location not served; only the /.well-known/ location is.
+note: Budget Direct publishes no API, so there is no API host to probe. These documents were fetched from
+  the consumer web host. The only machine-readable discovery documents Budget Direct serves are an RFC
+  9116 security.txt (which points at the Auto & General external vulnerability disclosure policy) and
+  the two mobile-app association files for its Fuel Discounts app. No OAuth/OIDC discovery, no API catalog,
+  no AI plugin and no MCP manifest is served. The identical security.txt is served on the parent host
+  www.autogeneral.com.au.
 related_hosts:
 - host: https://www.autogeneral.com.au
   path: /.well-known/security.txt
@@ -69,3 +25,46 @@ mobile_apps:
 - platform: android
   package: au.com.budgetdirect.bdfueldiscounts
   source: /.well-known/assetlinks.json
+hosts:
+- host: https://www.budgetdirect.com.au
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: budget-direct-security.txt
+    standard: RFC 9116
+    content_type: text/plain
+    note: Contact cybersecurity@autogeneral.com.au; Policy points at the A&G external VDP PDF; Expires
+      2026-10-31.
+  - path: /.well-known/apple-app-site-association
+    status: 200
+    file: budget-direct-apple-app-site-association
+    standard: Apple Universal Links / associated domains
+    note: Saved verbatim under the extensionless name the provider serves. As published it contains trailing
+      commas, so it is not strict JSON (Apple's parser tolerates this); it is stored without a .json extension
+      for that reason. Associates app 3M7D445KMV.au.com.budgetdirect.bdfueldiscounts with /bdapp/* and
+      declares webcredentials for the same app.
+  - path: /.well-known/assetlinks.json
+    status: 200
+    file: budget-direct-assetlinks.json
+    standard: Android Digital Asset Links
+    note: Delegates handle_all_urls to the Android package au.com.budgetdirect.bdfueldiscounts (3 signing
+      certs).
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/mcp.json
+    status: 404
+  - path: /.well-known/change-password
+    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
