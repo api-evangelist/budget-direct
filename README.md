@@ -1,4 +1,4 @@
-# Budget Direct (budget-direct)
+# Budget Direct
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,60 +64,86 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Budget Direct is one of Australia's largest direct-to-consumer general insurance brands, operated from Toowong, Queensland by Auto & General Services Pty Ltd (ABN 61 003 617 909), with general insurance products issued by Auto & General Insurance Company Limited (ABN 42 111 586 353), an APRA-authorised insurer. The brand sells car, home and contents, motorcycle, travel, pet and life insurance plus roadside assistance direct to Australian consumers online and by phone — life cover underwritten by NobleOak Life Limited, travel cover by Zurich Australian Insurance Limited. Its parent, Auto & General, also white-labels personal lines through distribution partners including Qantas, Coles Insurance, ING and Oceania Insurance.
+Budget Direct is one of Australia's largest direct-to-consumer general insurance brands, operated from Toowong, Queensland by Auto & General Services Pty Ltd (ABN 61 003 617 909) with general insurance products issued by Auto & General Insurance Company Limited (ABN 42 111 586 353), an APRA-authorised insurer. The brand sells car, home and contents, motorcycle, travel, pet and life insurance plus roadside assistance direct to Australian consumers online and by phone, with life cover underwritten by NobleOak Life Limited and travel cover by Zurich Australian Insurance Limited. Its parent, Auto & General, also white-labels personal lines through distribution partners including Qantas, Coles Insurance, ING and Oceania Insurance. Budget Direct publishes NO public self-serve developer portal and NO public API. Every candidate developer host was probed on 2026-07-25 — developer., developers., docs., api., partners., portal., broker., sandbox. and apis.budgetdirect.com.au all fail DNS resolution, and /developers, /developer, /api, /partners and /integrations all return HTTP 404 — while the full 738-URL sitemap contains no developer, API or integration page. Quote, bind, issue and claim (FNOL) exist only as consumer web journeys and a logged-in existing-customer self-service area; there is no documented machine surface for any of them. The parent domain does carry an Apigee gateway hostname (api.autogeneral.com.au, CNAME to autogeneral-prod.apigee.net, preconnect-hinted by the consumer site) but it is first-party and undocumented, with no developer portal, no OpenAPI, no ACORD/AL3 reference anywhere on either site, and partner integration handled as private commercial arrangements through Auto & General. This record is an honest stub: an APRA-regulated Australian carrier with no public API surface. The only machine-readable documents it serves are an RFC 9116 /.well-known/security.txt pointing at Auto & General's published external vulnerability disclosure policy, and the Apple and Android app-association files for its Fuel Discounts mobile app.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/budget-direct/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/budget-direct/refs/heads/main/apis.yml)
+**Areas:** Insurance · Australia · Property and Casualty · Direct to Consumer Insurance · Auto Insurance · Home Insurance · Travel Insurance · Life Insurance · Underwriting · Claims · Carrier
 
-## Tags
+## Budget Direct on APIs.io
 
-- Insurance
-- Australia
-- Property and Casualty
-- Direct to Consumer Insurance
-- Motor Insurance
-- Home Insurance
-- Travel Insurance
-- Life Insurance
-- Underwriting
-- Claims
-- Carrier
-- No Public API
+Everything profiled for Budget Direct is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/budget-direct/](https://apis.io/providers/budget-direct/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Security (2)
 
-**None.** Budget Direct publishes no public, self-serve API and no developer portal.
+Authentication, trust centre, and vulnerability disclosure.
 
-This is the honest finding, not a gap in research. Every conventional developer host and path was probed on 2026-07-25:
+- [Budget Direct Domain Security](https://apis.io/security/budget-direct/budget-direct-domain-security/)
+- [Budget Direct Vulnerability Disclosure](https://apis.io/security/budget-direct/budget-direct-vulnerability-disclosure/)
 
-| Surface | Result |
-| --- | --- |
-| `developer.` / `developers.` / `docs.` / `api.` / `apis.` / `partners.` / `portal.` / `broker.` / `sandbox.budgetdirect.com.au` | DNS does not resolve |
-| `/developers`, `/developer`, `/api`, `/partners`, `/integrations` | HTTP 404 |
-| `/openapi.json`, `/swagger.json`, `/api-docs`, `/graphql` | HTTP 404 (HTML error pages, no specs) |
-| `/.well-known/openid-configuration`, `/.well-known/oauth-authorization-server` | HTTP 404 |
-| Published sitemap (738 URLs) | No developer, API or integration page |
-| `autogeneral.com.au/partners/` | HTTP 200 — commercial partner list, zero technical integration content |
+## Where to find this API
 
-- **ACORD posture:** no ACORD reference found. No mention of ACORD, AL3, ACORD XML, ACORD certified or NGDS on either budgetdirect.com.au or autogeneral.com.au — consistent with a direct-to-consumer carrier that has no agency-management-system channel to feed.
-- **Quote / bind / issue / FNOL:** all four exist only as consumer web journeys and a logged-in "existing customers" self-service area. None is exposed as a documented machine interface.
-- **Auth model:** none published. The only authentication surface is the consumer customer login.
-- **Webhooks / events / AsyncAPI:** none. **Postman:** none. **GraphQL / gRPC:** none.
-- **Infrastructure note:** the parent domain carries a first-party Apigee gateway hostname (`api.autogeneral.com.au`, CNAME to `autogeneral-prod.apigee.net`) that the consumer site preconnect-hints. It is undocumented, unreachable anonymously, and not offered as a public API. A separate `docs.autogeneral.com.au` host serves an S3 listing of marketing and compliance PDFs (PDS, FSG, claim forms) — not API documentation.
-
-Australia has the legal machinery for open insurance and no live obligation: the Consumer Data Right that opened banking and energy was designated to extend to general insurance and then deferred. With no forcing function, an APRA-regulated carrier like Budget Direct has no reason to publish an API, and it does not.
-
-## Links
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.budgetdirect.com.au/)
-- [About](https://www.budgetdirect.com.au/about-us.html)
-- [Contact](https://www.budgetdirect.com.au/contact-us.html)
-- [Code of Practice](https://www.budgetdirect.com.au/about-us/code-of-practice.html)
-- [Media Releases](https://www.budgetdirect.com.au/about-us/media-releases.html)
-- [LinkedIn](https://au.linkedin.com/company/budget-direct)
-- [Parent — Auto & General](https://www.autogeneral.com.au/)
-- [Auto & General Partners](https://www.autogeneral.com.au/partners/)
+- [Support](https://www.budgetdirect.com.au/contact-us.html)
+- [Security](https://www.autogeneral.com.au/docs/ag-external-vulnerability-disclosure-policy.pdf)
+- [Compliance](https://www.budgetdirect.com.au/about-us/code-of-practice.html)
+- [Terms of service](https://www.budgetdirect.com.au/start/terms-of-use.html)
+- [Privacy policy](https://www.budgetdirect.com.au/start/privacy-policy.html)
+- [GitHub](https://github.com/AutoGeneral)
+
+## API Evangelist rating
+
+**Kin Score 18.3** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 49.1 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 4.8 |
+| Access clarity | 35.5 |
+
+**Agent readiness 0.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.3** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/budget-direct/](https://apis.io/providers/budget-direct/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Budget Direct: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/budget-direct/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
